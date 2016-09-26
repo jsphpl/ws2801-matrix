@@ -23,7 +23,7 @@ class WS2801_Matrix:
     Get the led's index from its xy coords
     """
     def getIndex(self, x, y):
-        return self.indexes[x][y]
+        return self.indexes[y][x]
 
     """
     Set a pixel to a specific color by its coordinates
@@ -32,13 +32,14 @@ class WS2801_Matrix:
         index = self.getIndex(x, y)
         # print "x=%i, y=%i, index=%i, color=%s" % (x, y, index, color)
         self.strip.setPixel(index, color)
+        self.strip.update()
 
     """
     Replace all pixels with new values
     """
     def writeArray(self, array):
         for x, y in self.iterPixels():
-            self.setPixel(x, y, array[x][y])
+            self.setPixel(x, y, array[y][x])
 
     """
     An iterator over all pixels as (x, y) tuple.
