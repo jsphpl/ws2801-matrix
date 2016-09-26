@@ -12,7 +12,7 @@ indexes = [  # a 2 by 2 display, yours will likely be larger…
 	[1, 2],
 	[0, 3]
 ]
-matrix = matrix.WS2801_Matrix()
+matrix = matrix.WS2801_Matrix(indexes)
 ```
 
 ### Set the color of a single pixel by its x- and y-coordinates
