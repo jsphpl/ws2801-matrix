@@ -8,6 +8,7 @@ from PIL import Image
 class WS2801_Matrix:
     def __init__(self, indexes):
         self.indexes = np.array(indexes)
+        num_leds = self.indexes.shape[0] * self.indexes.shape[1]
         self.strip = LedStrip_WS2801(num_leds)
 
     @property
