@@ -1,14 +1,14 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-# from LedStrip_WS2801 import LedStrip_WS2801, LedStrip_WS2801_FileBased
+from LedStrip_WS2801 import LedStrip_WS2801, LedStrip_WS2801_FileBased
 import numpy as np
 from PIL import Image
 
 class WS2801_Matrix:
     def __init__(self, indexes):
         self.indexes = np.array(indexes)
-        # self.strip = LedStrip_WS2801(num_leds)
+        self.strip = LedStrip_WS2801(num_leds)
 
     @property
     def height(self):
@@ -29,8 +29,8 @@ class WS2801_Matrix:
     """
     def setPixel(self, x, y, color):
         index = self.getIndex(x, y)
-        print "x=%i, y=%i, index=%i, color=%s" % (x, y, index, color)
-        # self.strip.setPixel(index, color)
+        # print "x=%i, y=%i, index=%i, color=%s" % (x, y, index, color)
+        self.strip.setPixel(index, color)
 
     """
     Replace all pixels with new values
