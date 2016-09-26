@@ -28,18 +28,20 @@ class WS2801_Matrix:
     """
     Set a pixel to a specific color by its coordinates
     """
-    def setPixel(self, x, y, color):
+    def setPixel(self, x, y, color, update = True):
         index = self.getIndex(x, y)
         # print "x=%i, y=%i, index=%i, color=%s" % (x, y, index, color)
         self.strip.setPixel(index, color)
-        self.strip.update()
+        if update:
+            self.strip.update()
 
     """
     Replace all pixels with new values
     """
     def writeArray(self, array):
         for x, y in self.iterPixels():
-            self.setPixel(x, y, array[y][x])
+            self.setPixel(x, y, array[y][x], False)
+        self.strip.update()
 
     """
     An iterator over all pixels as (x, y) tuple.
