@@ -55,7 +55,7 @@ class WS2801_Matrix:
     """
     def writeImageFile(self, path):
         image = Image.open(path)
-        image_array = np.array(image)
+        image_array = np.array(image, dtype=int)
         if image_array.shape[0:2] != self.indexes.shape[0:2]:
             raise DimensionsMismatch()
         else:
