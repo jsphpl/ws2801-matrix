@@ -72,7 +72,7 @@ class WS2801_Matrix:
     """
     def writeImageFolder(self, path, delay):
         while True:
-            for file in os.listdir(path):
+            for file in sorted(os.listdir(path)):
                 try:
                     file_path = os.path.join(path, file)
                     self.writeImageFile(file_path)
