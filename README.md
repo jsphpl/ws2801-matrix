@@ -1,5 +1,14 @@
 #WS2801_Matrix
 
+## Requirements
+
+The following python packages need to be installed:
+```
+PIL / Pillow
+numpy
+spidev
+```
+
 ## Usage
 
 ### Create an instance of the WS2801_Matrix class
@@ -26,4 +35,13 @@ matrix.setPixel(12, 21, [255, 255, 255])  # set the pixel at x=12, y=21 to white
 ```python
 path = 'example.png'
 matrix.writeImageFile(path)
+```
+
+### Display a sequence of images
+
+The images must be located in the same folder. Call `writeImageFolder(path, delay)` to loop through all images in `path`, showing each for `delay` seconds.
+
+```python
+path = 'animations/nyancat/'
+matrix.writeImageFolder(path, 1)
 ```
