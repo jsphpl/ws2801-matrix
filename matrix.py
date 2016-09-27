@@ -1,9 +1,11 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-from LedStrip_WS2801 import LedStrip_WS2801, LedStrip_WS2801_FileBased
+import os
+import time
 import numpy as np
 from PIL import Image
+from LedStrip_WS2801 import LedStrip_WS2801, LedStrip_WS2801_FileBased
 
 class WS2801_Matrix:
     def __init__(self, indexes):
@@ -62,6 +64,25 @@ class WS2801_Matrix:
             raise DimensionsMismatch()
         else:
             self.writeArray(image_array)
+
+    """
+    Write a sequence of images from to the matrix. Images
+    located at the given path are shown in the order of
+    their filenames. Image & matrix dimensions must match.
+    """
+    def writeImageFolder(self, path, delay):
+        while True:
+            for file in os.listdir(path):
+                try:
+                    file_path = os.path.join(path, file)
+                    self.writeImageFile(file_path)
+                except Exception as e:
+                    if isinstance(e, DimensionsMismatch):
+                        print("The dimensions of '%s' don't match" % file_path)
+                    else:
+                        print("'%s' doesn't seem to be a valid image file" % file_path)
+                else:
+                    time.sleep(delay)
 
 
 class DimensionsMismatch(Exception):
