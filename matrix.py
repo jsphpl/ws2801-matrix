@@ -38,6 +38,13 @@ class WS2801_Matrix:
             self.strip.update()
 
     """
+    Set all pixels to a specific color.
+    """
+    def setAll(self, color):
+        self.strip.setAll(color)
+        self.strip.update()
+
+    """
     Replace all pixels with new values
     """
     def writeArray(self, array):
